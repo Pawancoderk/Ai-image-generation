@@ -21,8 +21,8 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
-  credits       Int        @default(10)
-  ImageProjects ImageProject[]
+  credits       Int            @default(10)
+  imageProjects ImageProject[]
 
   @@unique([email])
   @@map("user")
