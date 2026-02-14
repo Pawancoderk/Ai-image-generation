@@ -17,6 +17,7 @@ export const getUserCredits = cache(async () => {
       where: { id: session.user.id },
       select: { credits: true },
     });
+    console.log("USER FOUND:", user)
 
     if (!user) {
       return { success: false, error: "User not found", credits: 0 };

@@ -63,7 +63,7 @@ export default function DashboardPage() {
         // Run session and image projects fetch in parallel
         const [sessionResult, imageResult] = await Promise.all([
           authClient.getSession(),
-        //   getUserImageProjects(),
+          // getUserImageProjects(),
         ]);
 
         // Set user from session
