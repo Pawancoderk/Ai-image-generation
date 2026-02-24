@@ -14,7 +14,7 @@ import {
 import { authClient } from "~/lib/auth-client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-// import { getUserImageProjects } from "~/actions/text-to-image";
+import { getUserImageProjects } from "~/actions/text-to-image";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -63,7 +63,7 @@ export default function DashboardPage() {
         // Run session and image projects fetch in parallel
         const [sessionResult, imageResult] = await Promise.all([
           authClient.getSession(),
-          // getUserImageProjects(),
+          getUserImageProjects(),
         ]);
 
         // Set user from session
@@ -102,7 +102,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-[400px] items-center justify-center">
+      <div className="flex min-h-100 items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="text-primary h-8 w-8 animate-spin" />
           <p className="text-muted-foreground text-sm">
@@ -120,7 +120,7 @@ export default function DashboardPage() {
         <div className="space-y-6">
           {/* Header Section */}
           <div className="space-y-2">
-            <h1 className="from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl">
+            <h1 className="from-primary to-primary/70 bg-linear-to-r bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl">
               Welcome back{user?.name ? `, ${user.name}` : ""}!
             </h1>
             <p className="text-muted-foreground text-base sm:text-lg">
